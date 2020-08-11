@@ -53,8 +53,8 @@ class ViewController: UIViewController {
             operation = 0
             return
         }
-        
-        if (tag == 11 || tag == 12 || tag == 13 || tag == 14) {
+        // 11 -> division | 12 -> multiplication | 13 -> subtraction | 14 -> addition | 17 -> percentage
+        if (tag == 11 || tag == 12 || tag == 13 || tag == 14 || tag == 17) {
             operation = tag
             isPerformingOperation = true
             previousNumber = Double(resultLabel.text!)!
@@ -70,6 +70,8 @@ class ViewController: UIViewController {
                 
             } else if tag == 14 {
                 resultLabel.text = "+"
+            } else if tag == 17 {
+                resultLabel.text = "%"
             }
         } else if tag == 15 {
             isPerformingOperation = true
@@ -81,6 +83,8 @@ class ViewController: UIViewController {
                 resultLabel.text = String(previousNumber - numberOnScreen)
             } else if operation == 14 {
                 resultLabel.text = String(previousNumber + numberOnScreen)
+            } else if operation == 17 {
+                resultLabel.text = String(numberOnScreen / previousNumber)
             }
         }
     }
